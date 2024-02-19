@@ -17,7 +17,9 @@ fastify.get('/produto/:id', produtoService.buscarProdutoPorId)
 
 fastify.post('/produto', produtoService.criarProduto)
 
-fastify.patch('/produto/id', produtoService.atualizarProduto)
+fastify.put('/produto/:id', produtoService.atualizarProduto)
+
+fastify.patch('/produto/:id', produtoService.atualizarProdutoParcial)
 
 fastify.delete('/produto/id', produtoService.removerProduto)
 

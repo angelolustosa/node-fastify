@@ -8,13 +8,25 @@ POST http://localhost:5005/produto
 Content-Type: application/json
 
 {
-    "id": 234,
-    "nome": "Produto 2",
-    "preco": 350,
-    "off": 17
+    "id": 123,
+    "nome": "Produto 1",
+    "preco": 459.90,
+    "off": 15
 }
 
 ###
 
 // Buscar produto por id
 GET http://localhost:5005/produto/123
+
+###
+
+PATCH  http://localhost:5005/produto/11
+Content-Type: application/json
+
+{
+    "id": 123,
+    "nome": "Produto 1 ATUALIZA",
+    "preco": 459.90,
+    "off": 15
+}
