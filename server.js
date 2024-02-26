@@ -23,7 +23,7 @@ fastify.patch('/produto/:id', produtoService.atualizarProdutoParcial)
 
 fastify.delete('/produtos', produtoService.removerTodosProduto)
 
-fastify.delete('/produto/id', produtoService.removerProduto)
+fastify.delete('/produto/:id', produtoService.removerProdutoPorId)
 
 fastify.listen({ port: PORT}, (err, address) => {
     if(err) {

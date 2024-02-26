@@ -8,7 +8,7 @@ POST http://localhost:5005/produto
 Content-Type: application/json
 
 {
-    "id": 123,
+    "id": 1,
     "nome": "Produto 1",
     "preco": 459.90,
     "off": 15
@@ -31,3 +31,7 @@ Content-Type: application/json
 ###
 
 DELETE  http://localhost:5005/produtos
+
+###
+
+DELETE  http://localhost:5005/produto/1

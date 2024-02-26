@@ -1,5 +1,8 @@
 import { produtos } from "../db/produtos.js"
 
+/* Ao importar o módulo produto ele se comportar como readOnly, ou seja, apenas leitura e no método removerTodosProduto() na linha 47 ao tentar setar produtos como vazio, pegamos o erro que não podemos setar em uma constante. Para realizarmos o remover desta forma, devemos declarar a variável dentro do escopo do arquivo como na linha 4 e não usar mais o import*/
+//let produtos = []
+
 export const produtoService = {
     buscarProdutos: (request, reply) => {
         return produtos
@@ -40,15 +43,25 @@ export const produtoService = {
         console.log('Ei Dev faz o PUT em casa ou onde quiser, não interessa, eu quero feito!');
     },
     removerTodosProduto: (req, res) => {
-        try {
-            produtos = []
-        } catch (error) {
-            console.log('ERROR', error); 
+        produtos.splice(0)
+        //produtos = []
+        return res.status(200).send(produtos) 
+    },
+    removerProdutoPorId: (req, res) => {
+        const id = req.params.id
+
+        const produtoIndex = produtos.findIndex(p => p.id === parseInt(id))
+
+        if(produtoIndex !== -1 ) {
+            //Se for diferente de -1 é pq achou o produto
+            let produtoEncontrado = produtos.splice(produtoIndex, 1)
+            return res.status(201).send(produtoEncontrado)
+        } else {
+            return res.status(404).send('Produto não encontrado!')
         }
 
-        return res.status(304)
-    },
-    removerProduto: (req, res) => {
-        
+
+
+
     },
 }
